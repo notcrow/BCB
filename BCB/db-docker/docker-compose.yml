@@ -1,0 +1,23 @@
+version: '3.7'
+
+services:
+  postgres:
+    image: bitnami/postgresql:latest
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=bcb
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=bcb
+    volumes:
+      - bcb_data:/bitnami/postgresql
+
+    networks:
+      - postgres-compose-network
+
+volumes:
+  bcb_data:
+
+networks:
+  postgres-compose-network:
+    driver: bridge
